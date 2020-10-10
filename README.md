@@ -13,8 +13,8 @@
 | password         | string | null: false |
 | family_name_kana | string | null: false |
 | name_kana        | string | null: false |
-| birthday         | string | null: false |
-| purchase         | string | null: false , foreign_key: true |
+| birthday         | date   | null: false |
+| purchase         | string | null: false |
 
 ### Association
 
@@ -23,16 +23,17 @@
 
 ##  items テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| category | string | null: false |
-| status   | string | null: false |
-| burden   | string | null: false |
-| area     | string | null: false |
-| date     | string | null: false |
-| price    | string | null: false |
-| comments | string | null: false |
-| user     | string | null: false , foreign_key: true |
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| category_id | integer    | null: false |
+| status_id   | integer    | null: false |
+| burden_id   | integer    | null: false |
+| area_id     | integer    | null: false |
+| date_id     | integer    | null: false |
+| price       | integer    | null: false |
+| comments    | text       | null: false |
+| items_name  | string     | null: false |
+| user        | references | null: false , foreign_key: true |
 
 ### Association
 
@@ -50,16 +51,17 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 ## addresses テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| Postal_code  | string     | null: false                    |
-| Prefecture   | string     | null: false                    |
+| postal_code  | string     | null: false                    |
+| prefecture   | integer    | null: false                    |
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
-| Building_name| string     |                                |
+| building_name| string     |                                |
 | phone_number | string     | null: false                    |
 | purchase     | references | null: false, foreign_key: true |
 
