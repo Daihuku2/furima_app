@@ -31,7 +31,7 @@
 | date_id     | integer    | null: false |
 | price       | integer    | null: false |
 | comments    | text       | null: false |
-| items_name  | string     | null: false |
+| name        | string     | null: false |
 | user        | references | null: false , foreign_key: true |
 
 ### Association
