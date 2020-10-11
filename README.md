@@ -14,7 +14,6 @@
 | family_name_kana | string | null: false |
 | name_kana        | string | null: false |
 | birthday         | date   | null: false |
-| purchase         | string | null: false |
 
 ### Association
 
