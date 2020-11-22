@@ -28,7 +28,7 @@
 | status_id   | integer    | null: false |
 | burden_id   | integer    | null: false |
 | area_id     | integer    | null: false |
-| date_id     | integer    | null: false |
+| delivery_id | integer    | null: false |
 | price       | integer    | null: false |
 | comments    | text       | null: false |
 | name        | string     | null: false |
