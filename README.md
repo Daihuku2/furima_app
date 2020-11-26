@@ -22,6 +22,7 @@
 
 ##  items テーブル
 
+
 | Column      | Type       | Options     |
 | ----------- | ---------- | ----------- |
 | category_id | integer    | null: false |
