@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
         @items = Item.all.order("created_at DESC")
     end
 
+    def show
+        @items = Item.find(params[:id])
+    end 
+
     def new
         @item = Item.new
     end
