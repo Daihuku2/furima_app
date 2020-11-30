@@ -4,7 +4,7 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @items.name %>
     </h2>
     <div class='item-img-content'>
       <%= image_tag @items.image ,class:"item-box-img" %>
@@ -55,33 +55,33 @@
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @items.comments %></span>
     </div>
     <table class="detail-table">
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= "出品者名" %></td>
+          <td class="detail-value"><%= @items.user.nickname %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= "カテゴリー名" %></td>
+          <td class="detail-value"><%= @items.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= "商品の状態" %></td>
+          <td class="detail-value"><%=  @items.status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= "発送料の負担" %></td>
+          <td class="detail-value"><%= @items.burden.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "発送元の地域" %></td>
+          <td class="detail-value"><%= @items.area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "発送日の目安" %></td>
+          <td class="detail-value"><%= @items.delivery.name %></td>
         </tr>
       </tbody>
     </table>
@@ -107,7 +107,7 @@
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
       <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <%= image_tag @items.image ,class:"comment-flag-icon" ,width:"20",height:"25"%>
         <span>コメントする<span>
       </button>
     </form>
