@@ -19,18 +19,20 @@ class ItemsController < ApplicationController
         if @item.valid?
             @item.save
             return redirect_to root_path
+        else
+            render 'new'
         end
-        render 'new'
     end
 
     def edit
     end
 
     def update
-        if @item.update(item_params)
-            return redirect_to root_path
-        end
+      if @item.update(item_params)
+        return redirect_to root_path
+      else 
         render 'edit'
+      end
     end
 
     private
