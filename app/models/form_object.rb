@@ -1,6 +1,6 @@
 class FormObject
   include ActiveModel::Model
-  attr_accessor :user_id,:item_id, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_id
+  attr_accessor :user_id,:item_id, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_id, :token
 
   # ここにバリデーションの処理を書く
 
@@ -10,6 +10,7 @@ class FormObject
     validates :city            
     validates :address
     validates :phone_number,    numericality: true,   length: { maximum: 11 }
+    validates :token
   end
 
   def save

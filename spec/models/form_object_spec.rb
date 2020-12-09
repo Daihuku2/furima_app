@@ -13,6 +13,11 @@ RSpec.describe FormObject, type: :model do
       expect(@order).to be_valid
     end
 
+    it "建物名が空でも登録できること" do
+      @order.building_name = nil
+      expect(@order).to be_valid
+    end
+
     it "postal_codeが空では登録できないこと" do
       @order.postal_code = nil
       @order.valid?
@@ -53,6 +58,18 @@ RSpec.describe FormObject, type: :model do
       @order.phone_number = "ろろろたまは"
       @order.valid?
       expect(@order.errors.full_messages).to include("Phone number is not a number")
+    end
+
+    it "phone_numberが12文字以上では登録できないこと" do
+      @order.phone_number = "173205080757"
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Phone number is not a number")
+    end
+
+    it "tokenが空では登録できないこと" do
+      @order.token = nil
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Token can't be blank")
     end
   end
 end

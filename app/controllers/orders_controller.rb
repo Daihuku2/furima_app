@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   before_action :select_item, only: [:index, :create]
-  before_action :move_to_index, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     @form = FormObject.new
-    if current_user.id == @item.user_id
+    if current_user.id == @item.user_id || unless item.order == nil
       redirect_to root_path
     end
   end
@@ -37,10 +37,12 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def move_to_index
-    @item = Item.find(params[:item_id])
-    unless user_signed_in?
-      redirect_to root_path
-    end
+  def pay_item
+    Payjp.api_key = "sk_test_***********"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp::Charge.create(
+      amount: @item.price,  # 商品の値段
+      card: order_params[:token],    # カードトークン
+      currency: 'jpy'                 # 通貨の種類（日本円）
+    )
   end
 end
